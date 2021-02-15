@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1259
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolBox", "ToolBox\ToolBox.csproj", "{07127E19-7353-47B3-AF6C-9E112EC4263B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToolBox", "ToolBox\ToolBox.csproj", "{07127E19-7353-47B3-AF6C-9E112EC4263B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolBox.Tests", "ToolBox.Tests\ToolBox.Tests.csproj", "{C41D53F1-8DF7-4741-B22F-5E539226697C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{07127E19-7353-47B3-AF6C-9E112EC4263B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07127E19-7353-47B3-AF6C-9E112EC4263B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07127E19-7353-47B3-AF6C-9E112EC4263B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C41D53F1-8DF7-4741-B22F-5E539226697C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C41D53F1-8DF7-4741-B22F-5E539226697C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C41D53F1-8DF7-4741-B22F-5E539226697C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C41D53F1-8DF7-4741-B22F-5E539226697C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
