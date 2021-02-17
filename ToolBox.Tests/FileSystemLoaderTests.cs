@@ -1,9 +1,8 @@
 using NUnit.Framework;
-using ToolBox;
 
-namespace Tests
+namespace ToolBox.Tests
 {
-  public class Tests
+  public class FileSystemLoaderTests
   {
     [Test]
     public void InitFileSystemLoader()
