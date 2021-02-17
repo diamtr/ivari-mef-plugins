@@ -30,5 +30,19 @@ namespace ToolBox.Tests.Engine
         this.memory.Remove(path);
       }
     }
+
+    public void TryClearAll()
+    {
+      foreach (var path in this.memory)
+      {
+        try
+        {
+          if (Directory.Exists(path))
+            Directory.Delete(path, true);
+        }
+        catch { }
+      }
+      this.memory.Clear();
+    }
   }
 }
