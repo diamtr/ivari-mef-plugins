@@ -4,6 +4,6 @@ namespace ToolBox
 {
   public interface ILoader
   {
-    List<object> Load();
+    List<T> Load<T>() where T : class;
   }
 }
