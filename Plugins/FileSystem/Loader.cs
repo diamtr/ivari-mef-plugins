@@ -4,11 +4,11 @@ using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.Linq;
 
-namespace Plugins
+namespace Plugins.FileSystem
 {
-  public class FileSystemLoader : ILoader
+  public class Loader : ILoader
   {
-    private IFileSystemSourcesConfiguration configuration;
+    private ISourcesConfiguration configuration;
 
     public List<T> Load<T>() where T : class
     {
@@ -31,7 +31,7 @@ namespace Plugins
       return plugins;
     }
 
-    public FileSystemLoader(IFileSystemSourcesConfiguration configuration)
+    public Loader(ISourcesConfiguration configuration)
     {
       this.configuration = configuration;
     }

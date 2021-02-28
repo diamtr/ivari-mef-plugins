@@ -2,9 +2,9 @@
 using System.IO;
 using System.Linq;
 
-namespace Plugins
+namespace Plugins.FileSystem
 {
-  public class FileSystemRecursiveConfiguration : IFileSystemSourcesConfiguration
+  public class RecursiveConfiguration : ISourcesConfiguration
   {
     private List<string> paths;
 
@@ -32,7 +32,7 @@ namespace Plugins
       return this.paths;
     }
 
-    public FileSystemRecursiveConfiguration()
+    public RecursiveConfiguration()
     {
       this.paths = new List<string>();
       this.Depth = 1;

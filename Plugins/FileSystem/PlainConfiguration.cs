@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Plugins
+namespace Plugins.FileSystem
 {
-  public class FileSystemPlainConfiguration : IFileSystemSourcesConfiguration
+  public class PlainConfiguration : ISourcesConfiguration
   {
     private List<string> paths;
 
@@ -19,7 +19,7 @@ namespace Plugins
       return this.paths;
     }
 
-    public FileSystemPlainConfiguration()
+    public PlainConfiguration()
     {
       this.paths = new List<string>();
     }

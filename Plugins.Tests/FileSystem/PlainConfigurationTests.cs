@@ -2,24 +2,25 @@
 using System;
 using System.IO;
 using System.Reflection;
+using Plugins.FileSystem;
 using Plugins.Tests.Engine;
 
-namespace Plugins.Tests
+namespace Plugins.Tests.FileSystem
 {
   [TestFixture]
-  public class FileSystemPlainConfigurationTests
+  public class PlainConfigurationTests
   {
     [Test]
     public void Create()
     {
-      var configuration = new FileSystemPlainConfiguration();
+      var configuration = new PlainConfiguration();
       Assert.IsEmpty(configuration.GetPaths());
     }
 
     [Test]
     public void UpdateSomeAndEmpty()
     {
-      var configuration = new FileSystemPlainConfiguration();
+      var configuration = new PlainConfiguration();
       configuration.AddSource("C:\\");
       configuration.AddSource(string.Empty);
 
@@ -38,7 +39,7 @@ namespace Plugins.Tests
       dirs.CreateIfNotExists(subdir1);
       dirs.CreateIfNotExists(subdir2);
 
-      var configuration = new FileSystemPlainConfiguration();
+      var configuration = new PlainConfiguration();
       configuration.AddSource(basedir);
       this.CheckPaths(configuration, 1, new string[] { basedir });
       configuration.AddSource("C:\\");
@@ -51,7 +52,7 @@ namespace Plugins.Tests
       dirs.DeleteIfCreated(basedir);
     }
 
-    private void CheckPaths(FileSystemPlainConfiguration configuration,
+    private void CheckPaths(PlainConfiguration configuration,
       int expectedCount,
       string[] expectedPaths)
     {

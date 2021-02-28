@@ -1,14 +1,13 @@
 using NUnit.Framework;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using TestSharedInterfacesLib;
+using Plugins.FileSystem;
 using Plugins.Tests.Engine;
 
-namespace Plugins.Tests
+namespace Plugins.Tests.FileSystem
 {
-  public class FileSystemLoaderTests
+  public class LoaderTests
   {
     TestDirectories dirs;
 
@@ -28,8 +27,8 @@ namespace Plugins.Tests
     [Test]
     public void InitPlainFileSystemLoader()
     {
-      var conf = new FileSystemPlainConfiguration();
-      var loader = new FileSystemLoader(conf);
+      var conf = new PlainConfiguration();
+      var loader = new Loader(conf);
       var res = loader.Load<object>();
       Assert.IsNotNull(res);
       Assert.IsEmpty(res);
@@ -38,8 +37,8 @@ namespace Plugins.Tests
     [Test]
     public void InitRecursiveFileSystemLoader()
     {
-      var conf = new FileSystemRecursiveConfiguration();
-      var loader = new FileSystemLoader(conf);
+      var conf = new RecursiveConfiguration();
+      var loader = new Loader(conf);
       var res = loader.Load<object>();
       Assert.IsNotNull(res);
       Assert.IsEmpty(res);
@@ -54,9 +53,9 @@ namespace Plugins.Tests
       var pluginDirName = Path.Combine(basePath, "Plugins");
       dirs.CreateIfNotExists(pluginDirName);
       File.Copy(Path.Combine(libSourcesPath, pluginDllName), Path.Combine(pluginDirName, pluginDllName), true);
-      var configuration = new FileSystemPlainConfiguration();
+      var configuration = new PlainConfiguration();
       configuration.AddSource(pluginDirName);
-      var loader = new FileSystemLoader(configuration);
+      var loader = new Loader(configuration);
       var res = loader.Load<IPlugin>();
       Assert.IsNotNull(res);
       Assert.IsNotEmpty(res);

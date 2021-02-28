@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Plugins
+namespace Plugins.FileSystem
 {
-  public interface IFileSystemSourcesConfiguration
+  public interface ISourcesConfiguration
   {
     void AddSource(string path);
     List<string> GetPaths();
