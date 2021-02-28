@@ -2,9 +2,9 @@
 using System;
 using System.IO;
 using System.Reflection;
-using ToolBox.Tests.Engine;
+using Plugins.Tests.Engine;
 
-namespace ToolBox.Tests
+namespace Plugins.Tests
 {
   [TestFixture]
   public class FileSystemRecursiveConfigurationTests

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace ToolBox
+namespace Plugins
 {
   public class FileSystemRecursiveConfiguration : IFileSystemSourcesConfiguration
   {

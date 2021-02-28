@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /i /e /s /y /f &quot;$(TargetPath)&quot; &quot;$(SolutionDir)ToolBox.Tests\Engine\lib&quot;" />
+    <Exec Command="xcopy /i /e /s /y /f &quot;$(TargetPath)&quot; &quot;$(SolutionDir)Plugins.Tests\Engine\lib&quot;" />
   </Target>
 
 </Project>

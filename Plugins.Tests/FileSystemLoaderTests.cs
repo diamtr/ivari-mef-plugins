@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using TestSharedInterfacesLib;
-using ToolBox.Tests.Engine;
+using Plugins.Tests.Engine;
 
-namespace ToolBox.Tests
+namespace Plugins.Tests
 {
   public class FileSystemLoaderTests
   {

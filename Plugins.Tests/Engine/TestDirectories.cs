@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace ToolBox.Tests.Engine
+namespace Plugins.Tests.Engine
 {
   internal class TestDirectories
   {

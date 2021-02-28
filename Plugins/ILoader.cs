@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ToolBox
+namespace Plugins
 {
   public interface ILoader
   {
