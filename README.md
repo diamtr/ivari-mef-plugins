@@ -1,2 +1,2 @@
 # plugins
-The library will help you load plugins in your app.
+The library will help you to load plugins in your app.
