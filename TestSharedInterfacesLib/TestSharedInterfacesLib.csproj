@@ -4,8 +4,4 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /i /e /s /y /f &quot;$(TargetPath)&quot; &quot;$(SolutionDir)ToolBox.Tests\Engine\lib&quot;" />
-  </Target>
-
 </Project>
