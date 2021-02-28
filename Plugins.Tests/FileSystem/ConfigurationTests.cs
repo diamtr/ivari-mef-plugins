@@ -8,7 +8,7 @@ using Plugins.Tests.Engine;
 namespace Plugins.Tests.FileSystem
 {
   [TestFixture]
-  public class RecursiveConfigurationTests
+  public class ConfigurationTests
   {
     private TestDirectories directories;
 
@@ -28,46 +28,74 @@ namespace Plugins.Tests.FileSystem
     [Test]
     public void Create()
     {
-      var configuration = new RecursiveConfiguration();
-      Assert.AreEqual(1, configuration.Depth, "Depth");
+      var configuration = new Configuration();
       Assert.IsEmpty(configuration.GetPaths());
     }
 
     [Test]
-    public void UpdateEmpty()
+    public void UpdateSomeAndEmpty()
     {
-      var configuration = new RecursiveConfiguration();
-      configuration.AddSource(string.Empty);
+      var configuration = new Configuration();
+      configuration.AddPath("C:\\");
+      configuration.AddPath(string.Empty);
+
+      this.CheckPaths(configuration, 1, new string[] { "C:\\" });
+    }
+
+    [Test]
+    public void UpdateOnlyByDesignNoRecursive()
+    {
+      var basedir = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "Tools");
+      var subdir1 = Path.Combine(basedir, "SubDir1");
+      var subdir2 = Path.Combine(basedir, "SubDir2");
+      this.directories.CreateIfNotExists(basedir);
+      this.directories.CreateIfNotExists(subdir1);
+      this.directories.CreateIfNotExists(subdir2);
+
+      var configuration = new Configuration();
+      configuration.AddPath(basedir);
+      this.CheckPaths(configuration, 1, new string[] { basedir });
+      configuration.AddPath("C:\\");
+      this.CheckPaths(configuration, 2, new string[] { basedir, "C:\\" });
+      configuration.AddPath(subdir2);
+      this.CheckPaths(configuration, 3, new string[] { basedir, "C:\\", subdir2 });
+    }
+
+    [Test]
+    public void UpdateEmptyRecursively()
+    {
+      var configuration = new Configuration();
+      configuration.AddPathRecursively(string.Empty, 0);
       Assert.IsEmpty(configuration.GetPaths());
     }
 
     [Test]
-    public void UpdateWithoutSubdirectories()
+    public void UpdateRecursivelyWithoutSubdirectoriesLevel1()
     {
       var basedir = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "Plugins");
       this.directories.CreateIfNotExists(basedir);
 
-      var configuration = new RecursiveConfiguration();
-      configuration.AddSource(basedir);
+      var configuration = new Configuration();
+      configuration.AddPathRecursively(basedir, 1);
       Assert.IsEmpty(configuration.GetPaths());
     }
 
     [Test]
-    public void UpdateWithoutSubdirectoriesDepth0()
+    public void UpdateRecursivelyWithoutSubdirectoriesLevel0()
     {
       var basedir = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "Plugins");
       this.directories.CreateIfNotExists(basedir);
 
-      var configuration = new RecursiveConfiguration();
-      configuration.Depth = 0;
-      configuration.AddSource(basedir);
+      var configuration = new Configuration();
+      configuration.AddPathRecursively(basedir, 0);
       this.CheckPaths(configuration, 1, new string[] { basedir });
     }
 
     [Test]
-    public void UpdateWith1LvlSubdirectories()
+    public void UpdateRecursivelyWithSubdirectoriesLevel1()
     {
       var basedir = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "Plugins");
@@ -77,13 +105,13 @@ namespace Plugins.Tests.FileSystem
       this.directories.CreateIfNotExists(subdir1);
       this.directories.CreateIfNotExists(subdir2);
 
-      var configuration = new RecursiveConfiguration();
-      configuration.AddSource(basedir);
+      var configuration = new Configuration();
+      configuration.AddPathRecursively(basedir, 1);
       this.CheckPaths(configuration, 2, new string[] { subdir1, subdir2 });
     }
 
     [Test]
-    public void UpdateWith2LvlSubdirectories()
+    public void UpdateRecursivelyWith2LvlSubdirectoriesLevel1()
     {
       var basedir = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "Plugins");
@@ -101,13 +129,13 @@ namespace Plugins.Tests.FileSystem
       this.directories.CreateIfNotExists(subdir21);
       this.directories.CreateIfNotExists(subdir22);
 
-      var configuration = new RecursiveConfiguration();
-      configuration.AddSource(basedir);
+      var configuration = new Configuration();
+      configuration.AddPathRecursively(basedir, 1);
       this.CheckPaths(configuration, 2, new string[] { subdir1, subdir2 });
     }
 
     [Test]
-    public void UpdateWith2LvlSubdirectoriesDepth2()
+    public void UpdateRecursivelyWith2LvlSubdirectoriesLevel2()
     {
       var basedir = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "Plugins");
@@ -125,13 +153,19 @@ namespace Plugins.Tests.FileSystem
       this.directories.CreateIfNotExists(subdir21);
       this.directories.CreateIfNotExists(subdir22);
 
-      var configuration = new RecursiveConfiguration();
-      configuration.Depth = 2;
-      configuration.AddSource(basedir);
+      var configuration = new Configuration();
+      configuration.AddPathRecursively(basedir, 2);
       this.CheckPaths(configuration, 4, new string[] { subdir11, subdir12, subdir21, subdir22 });
     }
 
-    private void CheckPaths(RecursiveConfiguration configuration,
+    [Test]
+    public void UpdateEmptyRecursivelyNegativeLevel()
+    {
+      var configuration = new Configuration();
+      Assert.Catch<ArgumentException>(() => configuration.AddPathRecursively(string.Empty, -1));
+    }
+
+    private void CheckPaths(Configuration configuration,
       int expectedCount,
       string[] expectedPaths)
     {

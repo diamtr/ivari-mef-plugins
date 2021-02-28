@@ -25,19 +25,9 @@ namespace Plugins.Tests.FileSystem
     }
 
     [Test]
-    public void InitPlainFileSystemLoader()
+    public void InitLoader()
     {
-      var conf = new PlainConfiguration();
-      var loader = new Loader(conf);
-      var res = loader.Load<object>();
-      Assert.IsNotNull(res);
-      Assert.IsEmpty(res);
-    }
-
-    [Test]
-    public void InitRecursiveFileSystemLoader()
-    {
-      var conf = new RecursiveConfiguration();
+      var conf = new Configuration();
       var loader = new Loader(conf);
       var res = loader.Load<object>();
       Assert.IsNotNull(res);
@@ -53,8 +43,8 @@ namespace Plugins.Tests.FileSystem
       var pluginDirName = Path.Combine(basePath, "Plugins");
       dirs.CreateIfNotExists(pluginDirName);
       File.Copy(Path.Combine(libSourcesPath, pluginDllName), Path.Combine(pluginDirName, pluginDllName), true);
-      var configuration = new PlainConfiguration();
-      configuration.AddSource(pluginDirName);
+      var configuration = new Configuration();
+      configuration.AddPath(pluginDirName);
       var loader = new Loader(configuration);
       var res = loader.Load<IPlugin>();
       Assert.IsNotNull(res);
