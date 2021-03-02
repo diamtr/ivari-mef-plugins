@@ -13,26 +13,28 @@ namespace Plugins.FileSystem
     /// Add directory path to configuration.
     /// </summary>
     /// <param name="path">Directory path.</param>
-    /// <remarks>Add contained directory path if file path sended.</remarks>
+    /// <remarks>Add contained file directory if a file path sended.</remarks>
     public void AddDirectory(string path)
     {
       if (string.IsNullOrWhiteSpace(path))
         return;
-
-      if (!this.IsDirectory(path))
-        path = Path.GetDirectoryName(path);
-
+      path = this.NormalizePath(path);
       this.paths.Add(path);
     }
 
+    /// <summary>
+    /// Add subdirectories paths of sended directory to configuration.
+    /// </summary>
+    /// <param name="path">Directory path.</param>
+    /// <param name="level">Subdirectories level.</param>
+    /// <remarks>Add subdirectories of contained file directory if a file path sended.</remarks>
     public void AddSubDirectories(string path, int level = 1)
     {
       if (level < 0)
         throw new ArgumentException($"Parameter {nameof(level)} must be positive.");
-
       if (string.IsNullOrWhiteSpace(path))
         return;
-
+      path = this.NormalizePath(path);
       this.paths.AddRange(this.GetSubdirectoriesRecursive(path, 0, level));
     }
 
@@ -40,10 +42,16 @@ namespace Plugins.FileSystem
     {
       if (level == maxLevel)
         return new List<string>() { path };
-
       return Directory.GetDirectories(path)
         .SelectMany(x => this.GetSubdirectoriesRecursive(x, level + 1, maxLevel))
         .ToList();
+    }
+
+    private string NormalizePath(string path)
+    {
+      if (!this.IsDirectory(path))
+        path = Path.GetDirectoryName(path);
+      return path;
     }
 
     private bool IsDirectory(string path)
