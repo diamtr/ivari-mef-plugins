@@ -44,7 +44,7 @@ namespace Plugins.Tests.FileSystem
       dirs.CreateIfNotExists(pluginDirName);
       File.Copy(Path.Combine(libSourcesPath, pluginDllName), Path.Combine(pluginDirName, pluginDllName), true);
       var configuration = new Configuration();
-      configuration.AddPath(pluginDirName);
+      configuration.AddDirectory(pluginDirName);
       var loader = new Loader(configuration);
       var res = loader.Load<IPlugin>();
       Assert.IsNotNull(res);
