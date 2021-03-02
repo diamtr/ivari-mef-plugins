@@ -35,7 +35,7 @@ namespace Plugins.Tests.FileSystem
     }
 
     [Test]
-    public void FileSystemPlainLoadByInterface()
+    public void LoadFromFileSystemByInterface()
     {
       var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
       var libSourcesPath = Path.GetFullPath(Path.Combine(basePath, "..\\..\\..\\Engine\\lib"));

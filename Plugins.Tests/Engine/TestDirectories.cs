@@ -12,8 +12,9 @@ namespace Plugins.Tests.Engine
       this.memory = new List<string>();
     }
 
-    public void CreateIfNotExists(string path)
+    public void CreateIfNotExists(params string[] paths)
     {
+      var path = Path.Combine(paths);
       if (!Directory.Exists(path))
       {
         Directory.CreateDirectory(path);

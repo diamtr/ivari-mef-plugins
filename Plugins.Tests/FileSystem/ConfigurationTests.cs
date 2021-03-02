@@ -39,7 +39,7 @@ namespace Plugins.Tests.FileSystem
       configuration.AddDirectory("C:\\");
       configuration.AddDirectory(string.Empty);
 
-      this.CheckPaths(configuration, new string[] { "C:\\" });
+      this.CheckPaths(configuration, "C:\\");
     }
 
     [Test]
@@ -55,11 +55,11 @@ namespace Plugins.Tests.FileSystem
 
       var configuration = new Configuration();
       configuration.AddDirectory(basedir);
-      this.CheckPaths(configuration, new string[] { basedir });
+      this.CheckPaths(configuration, basedir);
       configuration.AddDirectory("C:\\");
-      this.CheckPaths(configuration, new string[] { basedir, "C:\\" });
+      this.CheckPaths(configuration, basedir, "C:\\");
       configuration.AddDirectory(subdir2);
-      this.CheckPaths(configuration, new string[] { basedir, "C:\\", subdir2 });
+      this.CheckPaths(configuration, basedir, "C:\\", subdir2);
     }
 
     [Test]
@@ -98,7 +98,7 @@ namespace Plugins.Tests.FileSystem
 
       var configuration = new Configuration();
       configuration.AddSubDirectories(basedir, 0);
-      this.CheckPaths(configuration, new string[] { basedir });
+      this.CheckPaths(configuration, basedir);
     }
 
     [Test]
@@ -114,7 +114,7 @@ namespace Plugins.Tests.FileSystem
 
       var configuration = new Configuration();
       configuration.AddSubDirectories(basedir, 1);
-      this.CheckPaths(configuration, new string[] { subdir1, subdir2 });
+      this.CheckPaths(configuration, subdir1, subdir2);
     }
 
     [Test]
@@ -138,7 +138,7 @@ namespace Plugins.Tests.FileSystem
 
       var configuration = new Configuration();
       configuration.AddSubDirectories(basedir, 1);
-      this.CheckPaths(configuration, new string[] { subdir1, subdir2 });
+      this.CheckPaths(configuration, subdir1, subdir2);
     }
 
     [Test]
@@ -162,7 +162,7 @@ namespace Plugins.Tests.FileSystem
 
       var configuration = new Configuration();
       configuration.AddSubDirectories(basedir, 2);
-      this.CheckPaths(configuration, new string[] { subdir11, subdir12, subdir21, subdir22 });
+      this.CheckPaths(configuration, subdir11, subdir12, subdir21, subdir22);
     }
 
     [Test]
@@ -178,11 +178,11 @@ namespace Plugins.Tests.FileSystem
       var filePath = @"C:\\tmp\\tmp.txt";
       var configuration = new Configuration();
       configuration.AddDirectory(filePath);
-      this.CheckPaths(configuration, new string[] { "C:\\tmp" });
+      this.CheckPaths(configuration, "C:\\tmp");
     }
 
     private void CheckPaths(Configuration configuration,
-      string[] expectedPaths)
+      params string[] expectedPaths)
     {
       var paths = configuration.GetPaths();
       Assert.IsNotEmpty(paths);
