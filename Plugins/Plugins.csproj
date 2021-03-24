@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Authors>Ivan Dmitriev</Authors>
+    <Copyright>Ivan Dmitriev</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
