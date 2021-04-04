@@ -166,6 +166,39 @@ namespace Plugins.Tests.FileSystem
     }
 
     [Test]
+    public void AddDirectoryNotExistingPath()
+    {
+      var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                              "Plugins", "SubDir");
+      var configuration = new Configuration();
+      configuration.AddDirectory(path);
+      this.CheckPaths(configuration, path);
+    }
+
+    [Test]
+    public void AddSubDirectoriesNotExistingPathLevel0()
+    {
+      var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                              "Plugins", "SubDir");
+      var configuration = new Configuration();
+      configuration.AddSubDirectories(path, 0);
+      this.CheckPaths(configuration, path);
+    }
+
+    [Test]
+    [TestCase(1)]
+    [TestCase(2)]
+    [TestCase(3)]
+    public void AddSubDirectoriesNotExistingPathLevelGreaterThan0(int level)
+    {
+      var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                              "Plugins", "SubDir");
+      var configuration = new Configuration();
+      configuration.AddSubDirectories(path, level);
+      Assert.IsEmpty(configuration.GetPaths());
+    }
+
+    [Test]
     public void UpdateSubdirectoriesEmptyNegativeLevel()
     {
       var configuration = new Configuration();
@@ -181,7 +214,8 @@ namespace Plugins.Tests.FileSystem
       this.CheckPaths(configuration, "C:\\tmp");
     }
 
-    private void CheckPaths(Configuration configuration,
+    private void CheckPaths(
+      Configuration configuration,
       params string[] expectedPaths)
     {
       var paths = configuration.GetPaths();

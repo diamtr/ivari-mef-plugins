@@ -42,6 +42,8 @@ namespace Plugins.FileSystem
     {
       if (level == maxLevel)
         return new List<string>() { path };
+      if (!Directory.Exists(path))
+        return new List<string>();
       return Directory.GetDirectories(path)
         .SelectMany(x => this.GetSubdirectoriesRecursive(x, level + 1, maxLevel))
         .ToList();
