@@ -214,8 +214,22 @@ namespace Plugins.Tests.FileSystem
       this.CheckPaths(configuration, "C:\\tmp");
     }
 
+    [Test]
+    public void GetDefault()
+    {
+      var basePath = AppDomain.CurrentDomain.BaseDirectory;
+      var pluginsPath = Path.Combine(basePath, "plugins");
+      this.directories.CreateIfNotExists(pluginsPath);
+      var firstPluginPath = Path.Combine(pluginsPath, "firstPlugin");
+      this.directories.CreateIfNotExists(firstPluginPath);
+      var secondPluginPath = Path.Combine(pluginsPath, "secondPlugin");
+      this.directories.CreateIfNotExists(secondPluginPath);
+      var configuration = Configuration.GetDefault();
+      this.CheckPaths(configuration, firstPluginPath, secondPluginPath);
+    }
+
     private void CheckPaths(
-      Configuration configuration,
+      ISourcesConfiguration configuration,
       params string[] expectedPaths)
     {
       var paths = configuration.GetPaths();

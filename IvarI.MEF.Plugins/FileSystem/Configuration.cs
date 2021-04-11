@@ -10,7 +10,20 @@ namespace IvarI.Plugins.FileSystem
     private List<string> paths;
 
     /// <summary>
-    /// Add directory path to configuration.
+    /// Get default file system sources configuration.
+    /// </summary>
+    /// <returns>Default instance of sources configuration.</returns>
+    /// <remarks>Include first level directories in .\plugins</remarks>
+    public static ISourcesConfiguration GetDefault()
+    {
+      var conf = new Configuration();
+      var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins");
+      conf.AddSubDirectories(path);
+      return conf;
+    }
+
+    /// <summary>
+    /// Add the directory path to configuration.
     /// </summary>
     /// <param name="path">Directory path.</param>
     /// <remarks>Add contained file directory if a file path sended.</remarks>
@@ -23,7 +36,7 @@ namespace IvarI.Plugins.FileSystem
     }
 
     /// <summary>
-    /// Add subdirectories paths of sended directory to configuration.
+    /// Add subdirectories paths of the directory to configuration.
     /// </summary>
     /// <param name="path">Directory path.</param>
     /// <param name="level">Subdirectories level.</param>
