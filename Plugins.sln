@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugins", "Plugins\Plugins.csproj", "{07127E19-7353-47B3-AF6C-9E112EC4263B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IvarI.MEF.Plugins", "Plugins\IvarI.MEF.Plugins.csproj", "{07127E19-7353-47B3-AF6C-9E112EC4263B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugins.Tests", "Plugins.Tests\Plugins.Tests.csproj", "{C41D53F1-8DF7-4741-B22F-5E539226697C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSharedInterfacesLib", "TestSharedInterfacesLib\TestSharedInterfacesLib.csproj", "{6AD516B6-1C09-4E34-A01D-31348DC1E6CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSharedInterfacesLib", "TestSharedInterfacesLib\TestSharedInterfacesLib.csproj", "{6AD516B6-1C09-4E34-A01D-31348DC1E6CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin0Lib", "TestPlugin0Lib\TestPlugin0Lib.csproj", "{AF575B87-EA04-4AFA-AC68-603126EF0741}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestPlugin0Lib", "TestPlugin0Lib\TestPlugin0Lib.csproj", "{AF575B87-EA04-4AFA-AC68-603126EF0741}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

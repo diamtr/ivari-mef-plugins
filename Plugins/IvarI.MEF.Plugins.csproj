@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Ivan Dmitriev</Authors>
+    <Copyright>Ivan Dmitriev</Copyright>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AssemblyName>IvarI.MEF.Plugins</AssemblyName>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageId>IvarI.MEF.Plugins</PackageId>
+    <Product>IvarI.MEF.Plugins</Product>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <RootNamespace>IvarI.Plugins</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Composition" Version="5.0.0" />
+  </ItemGroup>
+
+</Project>

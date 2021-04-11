@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Plugins.FileSystem
+namespace IvarI.Plugins.FileSystem
 {
   public class Configuration : ISourcesConfiguration
   {

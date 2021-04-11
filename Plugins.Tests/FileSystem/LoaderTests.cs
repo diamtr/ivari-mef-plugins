@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System.IO;
 using System.Reflection;
 using TestSharedInterfacesLib;
-using Plugins.FileSystem;
+using IvarI.Plugins.FileSystem;
 using Plugins.Tests.Engine;
 
 namespace Plugins.Tests.FileSystem

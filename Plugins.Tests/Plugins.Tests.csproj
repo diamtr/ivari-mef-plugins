@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TestSharedInterfacesLib\TestSharedInterfacesLib.csproj" />
-    <ProjectReference Include="..\Plugins\Plugins.csproj" />
+    <ProjectReference Include="..\Plugins\IvarI.MEF.Plugins.csproj" />
   </ItemGroup>
 
   <ItemGroup>

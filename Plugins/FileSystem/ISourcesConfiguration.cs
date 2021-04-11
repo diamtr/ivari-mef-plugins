@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Plugins.FileSystem
+namespace IvarI.Plugins.FileSystem
 {
   public interface ISourcesConfiguration
   {

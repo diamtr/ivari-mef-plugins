@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 using System.Reflection;
-using Plugins.FileSystem;
+using IvarI.Plugins.FileSystem;
 using Plugins.Tests.Engine;
 
 namespace Plugins.Tests.FileSystem

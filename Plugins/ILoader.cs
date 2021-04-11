@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Plugins
+namespace IvarI.Plugins
 {
   public interface ILoader
   {

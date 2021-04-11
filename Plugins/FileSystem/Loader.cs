@@ -4,7 +4,7 @@ using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.Linq;
 
-namespace Plugins.FileSystem
+namespace IvarI.Plugins.FileSystem
 {
   public class Loader : ILoader
   {
