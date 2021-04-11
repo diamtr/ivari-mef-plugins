@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IvarI.MEF.Plugins", "Plugins\IvarI.MEF.Plugins.csproj", "{07127E19-7353-47B3-AF6C-9E112EC4263B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IvarI.MEF.Plugins", "IvarI.MEF.Plugins\IvarI.MEF.Plugins.csproj", "{07127E19-7353-47B3-AF6C-9E112EC4263B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugins.Tests", "Plugins.Tests\Plugins.Tests.csproj", "{C41D53F1-8DF7-4741-B22F-5E539226697C}"
 EndProject
